@@ -11,13 +11,13 @@
 
 <!-- <h4 align="center">A minimal Markdown Editor desktop app built on top of <a target="_blank">Electron</a>.</h4> -->
 
-![Chat Preview](https://github.com/zainuddin-maker/Bar-Stack-and-Group-Chart/blob/master/test.PNG?raw=true)
+![Chat Preview](https://github.com/zainuddin-maker/Custom-Date-Picker/blob/master/test.PNG?raw=true)
 <!-- ![screenshot](https://github.com/zainuddin-maker/Double-Y-Bar-With-Line-Chart-/blob/master/test.gif?raw=true) -->
 
 
-This application is used to create bar charts that can be stacked and grouped, which means that 1 point x axis can have more than 1 bar and each bar can be stacked with another value , this chart generate from  data and the data from  thingworx platform .
+This application is used to create a picker date with a custom appearance according to the client, then output a value in the Date format.
 
-## Example Data
+<!-- ## Example Data
 - Data Value
 
             [
@@ -66,7 +66,7 @@ This application is used to create bar charts that can be stacked and grouped, w
                     list_type: "PT",
                     list_color: "#f6db0f",
                 }
-            ]
+            ] -->
 
 ## Usage example
 
@@ -76,9 +76,8 @@ This application is used to create bar charts that can be stacked and grouped, w
 
 
 
-after the data is inputted into the application, we can see the data in the form of bar charts that are stacked and grouped, we can hover over each bar, and the data will appear, which contains the name and value. and also we can click on the x axis and then it will output a list of values ​​on the x axis.
 
-Every pop up is automatic so it doesn't cross the limit of the given div container
+just like the usual date picker, first click the date picker application then a calendar pop up will appear, select the date you want, then the date data will change.
 
 
 </td>

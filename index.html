@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="./d3.min.js"></script>
+        <style>
+            .datepicker-toggle {
+                display: inline-block;
+                position: relative;
+                width: 100px;
+                height: 30px;
+            }
+            .datepicker-toggle-button {
+                display: flex;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                /* background-image: url("data:image/svg+xml;base64,..."); */
+                background-color: #000;
+                color: #fff;
+                align-items: center;
+                justify-content: center;
+
+                font-size: small;
+            }
+            .datepicker-input {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                cursor: pointer;
+                box-sizing: border-box;
+            }
+            .datepicker-input::-webkit-calendar-picker-indicator {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <span class="datepicker-toggle">
+            <span class="datepicker-toggle-button">DD/MM/YYYY</span>
+            <input type="date" class="datepicker-input" />
+        </span> -->
+    </body>
+    <script>
+        var width = 120;
+        var height = 30;
+
+        var idunique = "1234567"
+
+        var fontsizetooltipstring = "normal";
+        var backgroundcolortooltip = "#000";
+        var textcolortooltip = "#fff";
+        var dateasdate =  new Date ("2015-01-28 00:00:00") 
+       
+
+        // console.log(dateasdate)
+        // ="DD/MM/YYYY"
+        //batas input
+
+        const stringtodate = (datestring) => {
+            var newdatemonthyear = new Date(datestring);
+
+            var newdate =
+                newdatemonthyear.getDate() < 10
+                    ? "0" + newdatemonthyear.getDate()
+                    : newdatemonthyear.getDate();
+            var newmonth =
+                newdatemonthyear.getMonth() + 1 < 10
+                    ? "0" + (newdatemonthyear.getMonth() + 1)
+                    : newdatemonthyear.getMonth() + 1;
+            var newyear = newdatemonthyear.getFullYear();
+
+            var tempnewdate = newdate + "/" + newmonth + "/" + newyear;
+
+            return tempnewdate;
+        };
+
+        if ( stringtodate(dateasdate) != "DD/MM/YYYY"){
+            console.log("trigger manually")
+        }
+
+      
+
+        const convertFontSize = (textSize) => {
+            var result = textSize;
+            switch (textSize) {
+                case "xsmall":
+                    result = "9px";
+                    break;
+                case "small":
+                    result = "10px";
+                    break;
+                case "normal":
+                    result = "11px";
+                    break;
+                case "large":
+                    result = "12px";
+                    break;
+                case "xlarge":
+                    result = "14px";
+                    break;
+                case "xxl":
+                    result = "16px";
+                    break;
+                case "2xl":
+                    result = "18px";
+                    break;
+                case "3xl":
+                    result = "22px";
+                    break;
+                default:
+                    result = "22px";
+            }
+
+            return result;
+        };
+
+        var datepicker_toggle = d3
+            .select("body")
+            .append("span")
+            .attr("class", "datepicker-toggle")
+    
+            .style("width", width + "px")
+            .style("height", height + "px");
+
+        datepicker_toggle
+            .append("span")
+            .attr("class", "datepicker-toggle-button")
+            .attr("id", "datepicker_toggle_button"+idunique)
+            .style("font-size", convertFontSize(fontsizetooltipstring))
+            .style("background-color", backgroundcolortooltip)
+            .style("color", textcolortooltip)
+            .text(stringtodate(dateasdate));
+        datepicker_toggle
+            .append("input")
+            .attr("type", "date")
+            .attr("class", "datepicker-input")
+            .attr("id", "datepicker_input"+idunique);
+
+
+        
+        const textInput = document.querySelector("#datepicker_toggle_button"+idunique);
+        console.log(textInput)
+        const dateInput = document.querySelector("#datepicker_input"+idunique);
+        console.log(dateInput)
+
+        dateInput.addEventListener("change", (event) => {
+            console.log(event.target.value);
+            console.log(new Date(event.target.value));
+
+            textInput.innerHTML = stringtodate(event.target.value);
+
+            // Reset the value so the picker always
+            // opens in a fresh state regardless of
+            // what was last picked
+            // event.target.value = "";
+        });
+    </script>
+</html>
